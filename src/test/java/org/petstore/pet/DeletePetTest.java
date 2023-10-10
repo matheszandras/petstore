@@ -1,10 +1,9 @@
 package org.petstore.pet;
 
 import io.restassured.RestAssured;
-import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
 
-public class DeletePet {
+public class DeletePetTest {
 
     @Test
     private static void deletePet (){

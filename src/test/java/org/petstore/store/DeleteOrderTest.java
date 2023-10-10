@@ -1,13 +1,12 @@
 package org.petstore.store;
 
-import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class DeleteOrder {
+public class DeleteOrderTest {
 
-    @Test
+    @Test (priority = 3)
     public static void deleteOrder() {
         //String order = "https://petstore.swagger.io/v2/store/order";
       /*  String body = """

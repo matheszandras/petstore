@@ -1,12 +1,11 @@
 package org.petstore.user;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class AddListOfUsers {
+public class AddListOfUsersTest {
 
     @Test
     public static void addListOfUsers() {

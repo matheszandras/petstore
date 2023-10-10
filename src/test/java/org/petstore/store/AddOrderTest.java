@@ -6,8 +6,9 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class AddOrder {
-    @Test
+public class AddOrderTest {
+
+    @Test(priority = 0)
     public static void addOrder() {
 
         String order = "https://petstore.swagger.io/v2/store/order";
@@ -25,7 +26,7 @@ public class AddOrder {
                 .post(order)
                 .then().statusCode(200)
                 .body("petId", equalTo(11))
-                .body("complete",equalTo(false))
+                .body("complete", equalTo(false))
                 .log().body();
     }
 }

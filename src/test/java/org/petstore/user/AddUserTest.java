@@ -1,16 +1,15 @@
 package org.petstore.user;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasValue;
 
-public class AddUser {
+public class AddUserTest {
 
-    @Test
+    @Test (priority = 1)
     private static void addUser() {
         String user = "https://petstore.swagger.io/v2/user";
         String body = """
