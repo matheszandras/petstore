@@ -24,10 +24,10 @@ public class AddUser {
                   "phone": "01234543210",
                   "userStatus": 11
                 }""";
-        ValidatableResponse response = given()
+        given()
                 .contentType(ContentType.JSON)
                 .body(body)
-                .post(user).then().statusCode(200).body("message", equalTo("11"));
-        response.log().body();
+                .post(user).then().statusCode(200).body("message", equalTo("11")).log().body();
+
     }
 }

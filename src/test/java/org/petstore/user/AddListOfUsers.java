@@ -34,6 +34,6 @@ public class AddListOfUsers {
                         "userStatus": 0
                     }
                 ]""";
-        ValidatableResponse response = given().contentType(ContentType.JSON).body(body).post(user).then().statusCode(200);
+        given().contentType(ContentType.JSON).body(body).post(user).then().statusCode(200).log().body();
     }
 }

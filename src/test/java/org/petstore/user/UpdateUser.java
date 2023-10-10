@@ -25,8 +25,13 @@ public class UpdateUser {
                   "phone": "string",
                   "userStatus": 0
                 }""";
-        ValidatableResponse response = given().contentType(ContentType.JSON).body(body).put(user + username).then().statusCode(200);
-        response.log().body();
+        given()
+                .contentType(ContentType.JSON)
+                .body(body).put(user + username)
+                .then()
+                .statusCode(200)
+                .log().body();
+
         String getUser = "https://petstore.swagger.io/v2/user/LightningJoe";
         Assert.assertEquals(get(getUser).getBody().jsonPath().get("firstName"),"Joseph_Lawton","User's firstname not updated");
     }

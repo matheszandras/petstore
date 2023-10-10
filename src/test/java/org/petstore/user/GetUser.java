@@ -12,6 +12,6 @@ public class GetUser {
     public static void getUser(){
         String user = "https://petstore.swagger.io/v2/user/";
         String userName = "LigthningJoe";
-        ValidatableResponse response = given().get(user + userName).then().statusCode(200);
+        given().get(user + userName).then().statusCode(200).log().body();
     }
 }

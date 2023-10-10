@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class PutPet {
 
     @Test
-    public static void putPet(){
+    public static void putPet() {
         String pet = "https://petstore.swagger.io/v2/pet";
         String body = """
                 {
@@ -35,13 +35,13 @@ public class PutPet {
                 	],
                 	"status": "pending"
                 }""";
-        ValidatableResponse response = given()
+        given()
                 .contentType(ContentType.JSON)
                 .body(body)
                 .put(pet)
                 .then()
                 .statusCode(200)
-                .body("id",equalTo(18));
-        response.log().body();
+                .body("id", equalTo(18))
+                .log().body();
     }
 }

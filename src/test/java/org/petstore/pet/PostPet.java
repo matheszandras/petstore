@@ -30,13 +30,13 @@ public class PostPet {
                 	"status": "available"
                 }
                 """;
-        ValidatableResponse response = given()
+        given()
                 .contentType(ContentType.JSON)
                 .body(body)
                 .post(pet)
                 .then()
                 .statusCode(200)
-                .body("id", equalTo(111));
-        response.log().body();
+                .body("id", equalTo(111))
+                .log().body();
     }
 }

@@ -14,7 +14,7 @@ public class GetPet {
     @Test
     public static void getPet() {
         String pet = "https://petstore.swagger.io/v2/pet/";
-        ValidatableResponse response = RestAssured.given().get(pet + "0").then().statusCode(404).body("message",equalTo("Pet not found"));
-        response.log().body();
+        RestAssured.given().get(pet + "0").then().statusCode(404).body("message",equalTo("Pet not found"))
+                .log().body();
     }
 }

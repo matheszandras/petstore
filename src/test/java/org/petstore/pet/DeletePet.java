@@ -10,7 +10,7 @@ public class DeletePet {
     private static void deletePet (){
         String postId ="111";
         String pet = "https://petstore.swagger.io/v2/pet/" + postId;
-        ValidatableResponse response = RestAssured.given().delete(pet).then().statusCode(200);
-        response.log().body();
+        RestAssured.given().delete(pet).then().statusCode(200).log().body();
+
     }
 }
