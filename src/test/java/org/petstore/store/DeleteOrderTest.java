@@ -1,14 +1,15 @@
 package org.petstore.store;
 
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
-public class DeleteOrderTest {
+public class DeleteOrderTest extends Setup {
 
     @Test (priority = 3)
     public static void deleteOrder() {
-        //String order = "https://petstore.swagger.io/v2/store/order";
       /*  String body = """
                 {
                   "id": 1,
@@ -18,9 +19,8 @@ public class DeleteOrderTest {
                   "status": "placed",
                   "complete": false
                 }""";*/
-        String deleteOrder = "https://petstore.swagger.io/v2/store/order/1";
-        given().delete(deleteOrder).then().statusCode(200).log().body();
-        String getOrder = "https://petstore.swagger.io/v2/store/order/1";
-        given().get(getOrder).then().statusCode(404).log().body();
+        String deleteOrderID = "1/";
+        given().delete(baseURI + storeUrl + deleteOrderID).then().statusCode(200).log().body();
+        given().get(baseURI + storeUrl + deleteOrderID).then().statusCode(404).log().body();
     }
 }

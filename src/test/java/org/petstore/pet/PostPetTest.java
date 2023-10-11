@@ -1,16 +1,17 @@
 package org.petstore.pet;
 
 import io.restassured.http.ContentType;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class PostPetTest {
+public class PostPetTest extends Setup {
     @Test (priority = 1)
     public static void postPet() {
-        String pet = "https://petstore.swagger.io/v2/pet";
-        String body = """
+                String body = """
                 {
                 	"id": 111,
                 	"category": {
@@ -32,7 +33,7 @@ public class PostPetTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(body)
-                .post(pet)
+                .post(baseURI + petUrl)
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(111))

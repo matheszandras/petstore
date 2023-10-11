@@ -1,15 +1,17 @@
 package org.petstore.user;
 
 import io.restassured.http.ContentType;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
-public class AddListOfUsersTest {
+public class AddListOfUsersTest extends Setup {
 
     @Test
     public static void addListOfUsers() {
-        String user = "https://petstore.swagger.io/v2/user/createWithArray";
+        String userArray = "createWithArray/";
         String body = """
                 [
                     {
@@ -33,6 +35,9 @@ public class AddListOfUsersTest {
                         "userStatus": 0
                     }
                 ]""";
-        given().contentType(ContentType.JSON).body(body).post(user).then().statusCode(200).log().body();
+        given().contentType(ContentType.JSON).body(body)
+                .post(baseURI + userArray)
+                .then().statusCode(200)
+                .log().body();
     }
 }

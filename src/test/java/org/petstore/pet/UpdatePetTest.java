@@ -1,16 +1,17 @@
 package org.petstore.pet;
 
 import io.restassured.http.ContentType;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class UpdatePetTest {
+public class UpdatePetTest extends Setup {
 
     @Test
-    public static void putPet() {
-        String pet = "https://petstore.swagger.io/v2/pet";
+    public static void updatePet() {
         String body = """
                 {
                 	"id": 18,
@@ -37,7 +38,7 @@ public class UpdatePetTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(body)
-                .put(pet)
+                .put(baseURI + petUrl)
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(18))

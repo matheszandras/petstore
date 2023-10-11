@@ -1,17 +1,17 @@
 package org.petstore.user;
 
 import io.restassured.http.ContentType;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasValue;
 
-public class AddUserTest {
+public class AddUserTest extends Setup {
 
     @Test (priority = 1)
-    private static void addUser() {
-        String user = "https://petstore.swagger.io/v2/user";
+    private static void addUser(){
         String body = """
                 {
                   "id": 11,
@@ -26,7 +26,9 @@ public class AddUserTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(body)
-                .post(user).then().statusCode(200).body("message", equalTo("11")).log().body();
+                .post(baseURI + userUrl)
+                .then().statusCode(200).body("message", equalTo("11"))
+                .log().body();
 
     }
 }

@@ -1,15 +1,16 @@
 package org.petstore.pet;
 
 import io.restassured.RestAssured;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
-public class DeletePetTest {
+import static io.restassured.RestAssured.baseURI;
+
+public class DeletePetTest extends Setup {
 
     @Test
-    private static void deletePet (){
-        String postId ="111";
-        String pet = "https://petstore.swagger.io/v2/pet/" + postId;
-        RestAssured.given().delete(pet).then().statusCode(200).log().body();
-
+    private static void deletePet() {
+        String postId = "111/";
+        RestAssured.given().delete(baseURI + petUrl + postId).then().statusCode(200).log().body();
     }
 }

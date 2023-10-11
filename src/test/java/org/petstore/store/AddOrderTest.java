@@ -1,17 +1,17 @@
 package org.petstore.store;
 
 import io.restassured.http.ContentType;
+import org.petstore.Setup;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class AddOrderTest {
+public class AddOrderTest extends Setup {
 
     @Test(priority = 0)
     public static void addOrder() {
-
-        String order = "https://petstore.swagger.io/v2/store/order";
         String body = """
                 {
                   "id": 1,
@@ -23,7 +23,7 @@ public class AddOrderTest {
                 }""";
         given()
                 .contentType(ContentType.JSON).body(body)
-                .post(order)
+                .post(baseURI + storeUrl)
                 .then().statusCode(200)
                 .body("petId", equalTo(11))
                 .body("complete", equalTo(false))
