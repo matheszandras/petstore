@@ -1,7 +1,5 @@
 package org.petstore.store;
 
-import com.beust.jcommander.converters.ISO8601DateConverter;
-import groovy.json.JsonParser;
 import io.restassured.http.ContentType;
 import org.petstore.Setup;
 import org.petstore.apiutils.JsonMapper;
@@ -9,10 +7,6 @@ import org.testng.annotations.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;

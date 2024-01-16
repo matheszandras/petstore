@@ -1,9 +1,6 @@
 package org.petstore;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
-import org.petstore.user.UserRequestBody;
 import org.testng.annotations.BeforeSuite;
 
 public class Setup {

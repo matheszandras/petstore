@@ -14,18 +14,6 @@ public class AddUserTest extends Setup {
     private static void addUser() {
       UserRequestBody user = new UserRequestBody(11, "LightningJoe", "Joseph", "Collins", "test@email.com", "password", "0123456", 11);
 
-        String body = """
-                {
-                  "id": 11,
-                  "username": "LightingJoe",
-                  "firstName": "Joseph",
-                  "lastName": "Collins",
-                  "email": "test@email.com",
-                  "password": "password",
-                  "phone": "01234543210",
-                  "userStatus": 11
-                }""";
-
         given()
                 .contentType(ContentType.JSON)
                 .body(JsonMapper.convertToJson(user)).log().body()
